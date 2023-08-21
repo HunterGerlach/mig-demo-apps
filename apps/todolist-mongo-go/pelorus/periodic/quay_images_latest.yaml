@@ -1,5 +1,5 @@
 # Config file for Pelorus project
-# https://github.com/konveyor/pelorus/
+# https://github.com/dora-metrics/pelorus/
 
 # Deployment based on the Pelorus quay.io images
 # with the :latest flag, which are built after
@@ -77,6 +77,18 @@ exporters:
 #gitea-committime@      value: gitea
 #gitea-committime@    - name: NAMESPACES
 #gitea-committime@      value: gitea-binary
+#azure-devops-committime@  - app_name: azure-devops-committime-exporter
+#azure-devops-committime@    exporter_type: committime
+#azure-devops-committime@    image_tag: latest
+#azure-devops-committime@    env_from_secrets:
+#azure-devops-committime@    - azure-devops-secret
+#azure-devops-committime@    extraEnv:
+#azure-devops-committime@    - name: LOG_LEVEL
+#azure-devops-committime@      value: DEBUG
+#azure-devops-committime@    - name: GIT_PROVIDER
+#azure-devops-committime@      value: azure-devops
+#azure-devops-committime@    - name: NAMESPACES
+#azure-devops-committime@      value: azure-devops-binary
 #jira-failure@  - app_name: jira-failure-exporter
 #jira-failure@    exporter_type: failure
 #jira-failure@    image_tag: latest
@@ -117,3 +129,37 @@ exporters:
 #@       value: github
 #@     - name: PROJECTS
 #@       value: konveyor/mig-demo-apps
+#pagerduty_failure@  - app_name: pagerduty-failure-exporter
+#pagerduty_failure@    exporter_type: failure
+#pagerduty_failure@    image_tag: latest
+#pagerduty_failure@    env_from_secrets:
+#pagerduty_failure@    - pagerduty-secret
+#pagerduty_failure@    extraEnv:
+#pagerduty_failure@    - name: LOG_LEVEL
+#pagerduty_failure@      value: DEBUG
+#pagerduty_failure@    - name: PROVIDER
+#pagerduty_failure@      value: pagerduty
+#azure-devops_failure@  - app_name: azure-devops-failure-exporter
+#azure-devops_failure@    exporter_type: failure
+#azure-devops_failure@    image_tag: latest
+#azure-devops_failure@    env_from_secrets:
+#azure-devops_failure@    - azure-devops-secret
+#azure-devops_failure@    extraEnv:
+#azure-devops_failure@    - name: LOG_LEVEL
+#azure-devops_failure@      value: DEBUG
+#azure-devops_failure@    - name: PROVIDER
+#azure-devops_failure@      value: azure-devops
+#azure-devops_failure@    - name: SERVER
+#azure-devops_failure@      value: dev.azure.com/matews1943
+#webhook_with_secret@  - app_name: webhook-secret-exporter
+#webhook_with_secret@    exporter_type: webhook
+#webhook_with_secret@    extraEnv:
+#webhook_with_secret@      - name: LOG_LEVEL
+#webhook_with_secret@        value: DEBUG
+#webhook_with_secret@      - name: SECRET_TOKEN
+#webhook_with_secret@        value: MySecretToken
+#webhook@  - app_name: webhook-exporter
+#webhook@    exporter_type: webhook
+#webhook@    extraEnv:
+#webhook@      - name: LOG_LEVEL
+#webhook@        value: DEBUG

@@ -1,4 +1,4 @@
-apiVersion: charts.pelorus.konveyor.io/v1alpha1
+apiVersion: charts.pelorus.dora-metrics.io/v1alpha1
 kind: Pelorus
 metadata:
   name: pelorus-sample
@@ -15,7 +15,7 @@ spec:
           - name: NAMESPACES
             value: mongo-persistent
         source_ref: master
-        source_url: https://github.com/konveyor/pelorus.git
+        source_url: https://github.com/dora-metrics/pelorus.git
       - app_name: committime-exporter
         exporter_type: committime
         extraEnv:
@@ -24,7 +24,7 @@ spec:
           - name: NAMESPACES
             value: mongo-persistent
         source_ref: master
-        source_url: https://github.com/konveyor/pelorus.git
+        source_url: https://github.com/dora-metrics/pelorus.git
 #gitlab-committime@      - app_name: gitlab-committime-exporter
 #gitlab-committime@        exporter_type: committime
 #gitlab-committime@        env_from_secrets:
@@ -37,7 +37,7 @@ spec:
 #gitlab-committime@          - name: NAMESPACES
 #gitlab-committime@            value: gitlab-binary
 #gitlab-committime@        source_ref: master
-#gitlab-committime@        source_url: https://github.com/konveyor/pelorus.git
+#gitlab-committime@        source_url: https://github.com/dora-metrics/pelorus.git
 #bitbucket-committime@      - app_name: bitbucket-committime-exporter
 #bitbucket-committime@        exporter_type: committime
 #bitbucket-committime@        env_from_secrets:
@@ -50,7 +50,7 @@ spec:
 #bitbucket-committime@          - name: NAMESPACES
 #bitbucket-committime@            value: bitbucket-binary
 #bitbucket-committime@        source_ref: master
-#bitbucket-committime@        source_url: https://github.com/konveyor/pelorus.git
+#bitbucket-committime@        source_url: https://github.com/dora-metrics/pelorus.git
 #gitea-committime@      - app_name: gitea-committime-exporter
 #gitea-committime@        exporter_type: committime
 #gitea-committime@        env_from_secrets:
@@ -63,7 +63,20 @@ spec:
 #gitea-committime@          - name: NAMESPACES
 #gitea-committime@            value: gitea-binary
 #gitea-committime@        source_ref: master
-#gitea-committime@        source_url: https://github.com/konveyor/pelorus.git
+#gitea-committime@        source_url: https://github.com/dora-metrics/pelorus.git
+#azure-devops-committime@      - app_name: azure-devops-committime-exporter
+#azure-devops-committime@        exporter_type: committime
+#azure-devops-committime@        env_from_secrets:
+#azure-devops-committime@          - azure-devops-secret
+#azure-devops-committime@        extraEnv:
+#azure-devops-committime@          - name: LOG_LEVEL
+#azure-devops-committime@            value: DEBUG
+#azure-devops-committime@          - name: GIT_PROVIDER
+#azure-devops-committime@            value: azure-devops
+#azure-devops-committime@          - name: NAMESPACES
+#azure-devops-committime@            value: azure-devops-binary
+#azure-devops-committime@        source_ref: master
+#azure-devops-committime@        source_url: https://github.com/dora-metrics/pelorus.git
 #jira-failure@      - app_name: jira-failure-exporter
 #jira-failure@        exporter_type: failure
 #jira-failure@        env_from_secrets:
@@ -76,7 +89,7 @@ spec:
 #jira-failure@          - name: PROJECTS
 #jira-failure@            value: todolist-mongo
 #jira-failure@        source_ref: master
-#jira-failure@        source_url: https://github.com/konveyor/pelorus.git
+#jira-failure@        source_url: https://github.com/dora-metrics/pelorus.git
 #jira-custom-failure@      - app_name: jira-custom-failure-exporter
 #jira-custom-failure@        exporter_type: failure
 #jira-custom-failure@        env_from_secrets:
@@ -95,7 +108,7 @@ spec:
 #jira-custom-failure@          - name: CORRESPONDING_ISSUE
 #jira-custom-failure@            value: https://pelorustest.atlassian.net/jira/core/projects/FIRST/board?selectedIssue=FIRST-14
 #jira-custom-failure@        source_ref: master
-#jira-custom-failure@        source_url: https://github.com/konveyor/pelorus.git
+#jira-custom-failure@        source_url: https://github.com/dora-metrics/pelorus.git
 #@      - app_name: failure-exporter
 #@        exporter_type: failure
 #@        env_from_secrets:
@@ -108,7 +121,47 @@ spec:
 #@          - name: PROJECTS
 #@            value: konveyor/mig-demo-apps
 #@        source_ref: master
-#@        source_url: https://github.com/konveyor/pelorus.git
+#@        source_url: https://github.com/dora-metrics/pelorus.git
+#pagerduty_failure@      - app_name: pagerduty-failure-exporter
+#pagerduty_failure@        exporter_type: failure
+#pagerduty_failure@        env_from_secrets:
+#pagerduty_failure@          - pagerduty-secret
+#pagerduty_failure@        extraEnv:
+#pagerduty_failure@          - name: LOG_LEVEL
+#pagerduty_failure@            value: DEBUG
+#pagerduty_failure@          - name: PROVIDER
+#pagerduty_failure@            value: pagerduty
+#pagerduty_failure@        source_ref: master
+#pagerduty_failure@        source_url: https://github.com/dora-metrics/pelorus.git
+#azure-devops_failure@      - app_name: azure-devops-failure-exporter
+#azure-devops_failure@        exporter_type: failure
+#azure-devops_failure@        env_from_secrets:
+#azure-devops_failure@          - azure-devops-secret
+#azure-devops_failure@        extraEnv:
+#azure-devops_failure@          - name: LOG_LEVEL
+#azure-devops_failure@            value: DEBUG
+#azure-devops_failure@          - name: PROVIDER
+#azure-devops_failure@            value: azure-devops
+#azure-devops_failure@          - name: SERVER
+#azure-devops_failure@            value: dev.azure.com/matews1943
+#azure-devops_failure@        source_ref: master
+#azure-devops_failure@        source_url: https://github.com/dora-metrics/pelorus.git
+#webhook_with_secret@      - app_name: webhook-secret-exporter
+#webhook_with_secret@        exporter_type: webhook
+#webhook_with_secret@        extraEnv:
+#webhook_with_secret@          - name: LOG_LEVEL
+#webhook_with_secret@            value: DEBUG
+#webhook_with_secret@          - name: SECRET_TOKEN
+#webhook_with_secret@            value: MySecretToken
+#webhook_with_secret@        source_ref: master
+#webhook_with_secret@        source_url: https://github.com/dora-metrics/pelorus.git
+#webhook@      - app_name: webhook-exporter
+#webhook@        exporter_type: webhook
+#webhook@        extraEnv:
+#webhook@          - name: LOG_LEVEL
+#webhook@            value: DEBUG
+#webhook@        source_ref: master
+#webhook@        source_url: https://github.com/dora-metrics/pelorus.git
   extra_prometheus_hosts: null
   openshift_prometheus_basic_auth_pass: changeme
   openshift_prometheus_htpasswd_auth: internal:{SHA}+pvrmeQCmtWmYVOZ57uuITVghrM=
